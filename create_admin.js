@@ -4,7 +4,7 @@ const db = require("./db/connection");
 
 async function crearUsuarioAdmin() {
   const nombre = "pepe";
-  const email = "nicofa2000@gmail.com";
+  const email = "nicofa20000@gmail.com";
   const passwordPlano = "123456789";
   const telefono = "+543535655503";
   const nacimiento = "1985-11-09";
