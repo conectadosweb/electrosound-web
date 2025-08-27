@@ -102,7 +102,8 @@ const ALLOWED_ORIGINS = new Set([
   'http://127.0.0.1:4000',
   'http://localhost',
   'https://www.electrosoundpack.com',
-  'https://www.electrosoundpack.com'
+  'https://www.electrosoundpack.com',
+  'https://electrosound-web.onrender.com'
 ]);
 app.use(cors({
   origin: (origin, cb) => {
