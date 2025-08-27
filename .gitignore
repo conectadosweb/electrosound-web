@@ -1,0 +1,39 @@
+# === Node.js ===
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# === Entornos ===
+# .env
+# .env.local
+# .env.development
+# .env.test
+# .env.production
+
+# === Datos sensibles ===
+# database.db
+# *.sqlite
+# *.sqlite3
+# *.db
+# /public/data/
+# /public/temp/
+
+# === Archivos del sistema ===
+.DS_Store
+Thumbs.db
+
+# === Logs ===
+logs/
+*.log
+
+# === VS Code ===
+.vscode/
+
+# === Build (si usás TypeScript o bundlers) ===
+dist/
+build/
+
+# === Archivos temporales y de subidas ===
+tmp/
+uploads/

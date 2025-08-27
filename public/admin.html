@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Dashboard de Administración - Electro Sound Pack</title>
+
+  <link href="assets/css_admin/css_admin.css" rel="stylesheet" />
+  <link href="data/web/favicon.ico" rel="icon" type="image/x-icon" />
+  <script src="assets/js_admin/js_admin.js" defer></script>
+</head>
+<body>
+
+    <div id="login-screen" class="login-screen">
+    <div class="login-card">
+      <h1 class="title">Panel Administrativo</h1>
+      <form id="login-form" class="form">
+        <label class="label">Email</label>
+        <input type="email" id="login-email" class="input" placeholder="admin@electrosoundpack.com" required />
+
+        <label class="label">Contraseña</label>
+        <input type="password" id="login-password" class="input" placeholder="********" required />
+
+        <button type="submit" class="btn primary full">Ingresar</button>
+      </form>
+      <p class="muted">Acceso restringido. Se requiere token válido.</p>
+    </div>
+  </div>
+
+    <div id="app-shell" class="app-shell hidden">
+        <aside id="admin-sidebar" class="sidebar">
+      <div class="sidebar-header">
+        <button id="close-sidebar-btn" class="icon-btn" aria-label="Cerrar menú">✕</button>
+        <div class="brand">
+          <img src="data/web/conectados.webp" alt="Electro Sound Pack" class="brand-logo" />
+          <span class="brand-name">Electro Sound Pack</span>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <a href="#dashboard" class="nav-link active" data-section="dashboard">Dashboard</a>
+        <a href="#productos" class="nav-link" data-section="productos">Productos</a>
+        <a href="#usuarios" class="nav-link" data-section="usuarios">Usuarios</a>
+        <a href="#csv" class="nav-link" data-section="csv">CSV</a>
+        <a href="#config" class="nav-link" data-section="config">Configuración</a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <button id="toggle-theme-btn" class="btn outline small">🌙 Tema</button>
+        <button id="logout-btn" class="btn danger small">Cerrar sesión</button>
+      </div>
+    </aside>
+
+        <main id="main-content" class="main">
+      <header class="topbar">
+        <button id="open-sidebar-btn" class="icon-btn" aria-label="Abrir menú">☰</button>
+        <h2 id="page-title" class="page-title">Dashboard</h2>
+      </header>
+
+      <div class="content">
+
+                <section id="section-dashboard" class="page-section">
+          <div class="grid">
+            <div class="card">
+              <h3>Estado</h3>
+              <div class="rows">
+                <div class="row"><span>API:</span> <strong id="api-status">—</strong></div>
+                <div class="row"><span>DB mtime:</span> <strong id="db-mtime">—</strong></div>
+              </div>
+              <button id="refresh-status-btn" class="btn">Refrescar</button>
+            </div>
+
+            <div class="card">
+              <h3>Accesos rápidos</h3>
+              <div class="quick-actions">
+                <button class="card-link-btn btn small" data-goto="productos">Gestión de productos</button>
+                <button class="card-link-btn btn small" data-goto="usuarios">Gestión de usuarios</button>
+                <button class="card-link-btn btn small" data-goto="csv">Importar CSV</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+                <section id="section-productos" class="page-section hidden">
+          <div class="section-head">
+            <h3>Productos</h3>
+            <div class="actions">
+              <input type="text" id="products-search" class="input" placeholder="Buscar por nombre o ID..." />
+              <button id="new-product-btn" class="btn primary">Nuevo</button>
+            </div>
+          </div>
+
+          <div id="products-list" class="list grid-cards" aria-live="polite"></div>
+          <div id="products-sentinel" class="sentinel" aria-hidden="true"></div>
+        </section>
+
+                <section id="section-usuarios" class="page-section hidden">
+          <div class="section-head">
+            <h3>Usuarios</h3>
+            <div class="actions">
+              <input type="text" id="users-search" class="input" placeholder="Buscar por email o nombre..." />
+              <button id="new-user-btn" class="btn primary">Nuevo</button>
+            </div>
+          </div>
+
+          <div id="users-list" class="list grid-rows" aria-live="polite"></div>
+          <div id="users-sentinel" class="sentinel" aria-hidden="true"></div>
+        </section>
+
+                <section id="section-csv" class="page-section hidden">
+          <div class="grid">
+            <div class="card">
+              <h3>Importar CSV</h3>
+              <form id="csv-upload-form" class="form">
+                <input type="file" id="csv-file" class="input" accept=".csv,text/csv" />
+                <div class="row">
+                  <button type="submit" class="btn primary">Procesar CSV</button>
+                  <span id="csv-status" class="muted"></span>
+              </div>
+              </form>
+
+              <div id="csv-progress" class="progress hidden">
+                <div id="csv-progress-bar" class="progress-bar" style="width:0%"></div>
+              </div>
+
+              <div id="csv-summary" class="summary"></div>
+              <div id="csv-preview" class="table-wrap"></div>
+            </div>
+
+            <div class="card">
+              <h3>Exportar datos</h3>
+              <select id="csv-download-select" class="dropdown">
+                <option value="productos">Productos</option>
+                <option value="usuarios">Usuarios</option>
+              </select>
+              <button id="csv-download-btn" class="btn">Descargar CSV</button>
+            </div>
+          </div>
+        </section>
+
+                <section id="section-config" class="page-section hidden">
+          <div class="card">
+            <h3>Configuración</h3>
+            <div class="rows">
+              <div class="row">
+                <span>Modo:</span>
+                <strong id="env-mode">—</strong>
+              </div>
+              <div class="row">
+                <span>Token:</span>
+                <code id="token-preview" class="code ellipsis">—</code>
+              </div>
+              <div class="row">
+                <button id="copy-token-btn" class="btn small">Copiar token</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </main>
+  </div>
+
+      <div id="media-viewer-modal" class="modal hidden" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="modal-content media">
+      <button class="modal-close" data-close-media>&times;</button>
+      <div class="media-stage" id="media-stage"></div>
+      <div class="media-actions">
+        <button id="media-prev" class="btn small">⟵</button>
+        <button id="media-next" class="btn small">⟶</button>
+        <button id="media-download" class="btn small">Descargar</button>
+      </div>
+    </div>
+  </div>
+
+    <div id="file-manager-modal" class="modal hidden" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="modal-content max-width-720">
+      <div class="modal-head">
+        <h3>Gestor de archivos</h3>
+        <button class="modal-close" data-close-filemanager>&times;</button>
+      </div>
+      <div class="modal-body">
+        <h4>Archivos actuales</h4>
+        <div id="file-manager-grid" class="media-grid"></div>
+        
+        <h4>Subir nuevas imágenes</h4>
+        <form id="upload-images-form" class="form">
+          <input type="file" id="upload-images-input" name="images" multiple class="input" accept="image/*,video/*" />
+          <div class="row">
+            <button type="submit" class="btn primary">Subir</button>
+            <span id="upload-images-result" class="muted"></span>
+          </div>
+        </form>
+      </div>
+      <div class="modal-foot">
+        <button class="btn" data-close-filemanager>Cerrar</button>
+      </div>
+    </div>
+  </div>
+
+    <template id="tpl-product-card">
+    <article class="card product" data-id="">
+      <div class="thumb">
+        <img class="thumb-img" alt="Imagen del producto" loading="lazy" />
+        <span class="badge badge-stock" data-stock=""></span>
+      </div>
+      <div class="card-body">
+        <h4 class="title ellipsis"></h4>
+        <div class="meta">
+          <span class="price"></span>
+          <span class="flags">
+            <span class="flag new hidden">Nuevo</span>
+            <span class="flag sale hidden">Oferta</span>
+            <span class="flag hidden" data-visible>Visible</span>
+          </span>
+        </div>
+        <div class="card-actions">
+          <button class="btn small" data-edit>Editar</button>
+          <button class="btn small" data-images>Imágenes</button>
+          <label class="switch">
+            <input type="checkbox" data-visible-toggle />
+            <span>Visible</span>
+          </label>
+        </div>
+      </div>
+    </article>
+  </template>
+
+  <template id="tpl-user-row">
+    <div class="row user" data-id="">
+      <div class="cell email ellipsis"></div>
+      <div class="cell name ellipsis"></div>
+      <div class="cell role">
+        <label class="switch">
+          <input type="checkbox" data-admin-toggle />
+          <span>Admin</span>
+        </label>
+      </div>
+      <div class="cell actions">
+        <button class="btn small" data-edit-user>Editar</button>
+      </div>
+    </div>
+  </template>
+
+</body>
+</html>

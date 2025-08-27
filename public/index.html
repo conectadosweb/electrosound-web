@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Electro Sound Pack - Tienda de Tecnología</title>
+    <link href="assets/css/style.css" rel="stylesheet" />
+    <link href="data/web/favicon.ico" rel="icon" type="image/x-icon" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+</head>
+<body>
+    <img src="https://tracker.metricool.com/c3po.jpg?hash=56ed527234635602b6f3140e6ff8cfb0" style="display:none;" alt="Metricool Tracker"/>
+    
+    <header class="hero">
+        <div class="header-container">
+            <div class="logo">
+                <img src="data/web/conectadosLogo.webp" alt="Electro Sound Pack Web Claro" class="logo-claro">
+                <img src="data/web/conectadosLogo-dark.webp" alt="Electro Sound Pack Web Oscuro" class="logo-oscuro">
+            </div>
+            <h1 style="position: absolute; left: -9999px;">Electro Sound Pack - Tienda de Tecnología</h1>
+            
+            <div class="header-main-controls">
+                <p class="slogan">Tecnología que inspira</p>
+                <div class="search-box">
+                    <input id="search-input" placeholder="Buscar productos..." type="text" />
+                    <button id="search-btn"><i class="fas fa-search"></i></button>
+                </div>
+                <div class="user-actions">
+                    <button id="login-btn"><i class="fas fa-user"></i> Ingresar</button>
+                </div>
+            </div>
+            
+            <div class="darkmode-toggle" style="position: absolute; top: 10px; right: 10px">
+                <label class="switch">
+                    <input id="dark-mode-toggle" type="checkbox" />
+                    <span class="slider round"></span>
+                </label>
+            </div>
+        </div>
+    </header>
+    
+    <div class="login-overlay" id="login-overlay" style="display: none">
+        <div class="login-box">
+            <span class="close-modal" id="close-login">×</span>
+            <h2 id="form-title">Iniciar Sesión</h2>
+            <form id="auth-form">
+                <input id="email" placeholder="Correo electrónico" required type="email" />
+                <input id="password" placeholder="Contraseña" required type="password" />
+                <div id="extra-fields" style="display: none">
+                    <input id="nombre" placeholder="Nombre completo" type="text" />
+                    <input id="confirmPassword" placeholder="Confirmar contraseña" type="password" />
+                    <input id="telefono" placeholder="Teléfono" type="tel" />
+                    <input id="nacimiento" placeholder="Fecha de nacimiento" type="date" />
+                    <input id="pais" placeholder="País o región" type="text" />
+                </div>
+                <button class="btn" type="submit">Ingresar</button>
+                <p class="register-text">
+                    ¿No tienes cuenta? <a href="#" id="toggle-mode-link">Regístrate</a>
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <div class="login-overlay" id="account-modal" style="display: none">
+        <div class="login-box">
+            <span class="close-modal">×</span>
+            <h2 id="account-title">🧾 Editar mis datos</h2>
+            <form id="account-form">
+                <input id="account-nombre" placeholder="Nombre completo" required type="text" />
+                <input id="account-telefono" placeholder="Teléfono" type="tel" />
+                <input id="account-nacimiento" placeholder="Nacimiento" type="date" />
+                <input id="account-pais" placeholder="País o región" type="text" />
+                <input id="account-password" placeholder="Nueva contraseña (opcional)" type="password" />
+                <button class="btn" type="submit">Guardar cambios</button>
+            </form>
+        </div>
+    </div>
+
+    <main class="container">
+        <section class="product-filters">
+            <button class="filter-btn active" data-filter="all">Todos</button>
+            <button class="filter-btn" data-filter="oferta">Ofertas</button>
+            <button class="filter-btn" data-filter="nuevo">Nuevos</button>
+            <button class="filter-btn" data-filter="disponible">Disponibles</button>
+        </section>
+        <div class="products-grid" id="products-container"></div>
+        
+        <div id="loading-spinner" style="text-align: center; padding: 20px; display: none;">
+            <i class="fas fa-spinner fa-spin fa-2x"></i> Cargando más productos...
+        </div>
+    </main>
+
+    <section class="brand-carousel">
+        <div class="carousel-track">
+            <div class="carousel-slide">
+                <img alt="SOUL" src="data/brands/logo1.png" />
+            </div>
+            <div class="carousel-slide">
+                <img alt="SAMSUNG" src="data/brands/logo2.png" />
+            </div>
+            <div class="carousel-slide">
+                <img alt="XIAOMI" src="data/brands/logo3.png" />
+            </div>
+            <div class="carousel-slide">
+                <img alt="JBL" src="data/brands/logo4.png" />
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Contacto</h3>
+                    <p><i class="fas fa-phone"></i> +54 9 3535623051</p>
+                    <p><i class="fas fa-envelope"></i> info@electrosoundpack.com</p>
+                    <a href="https://wa.me/5493535623051?text=Estoy%20interesado%20en%20los%20productos%2C%20necesito%20que%20me%20asesoren" target="_blank" rel="noopener noreferrer">
+                        <button class="whatsapp-btn" id="whatsapp-btn">
+                            <i class="fab fa-whatsapp"></i> Pedir por WhatsApp
+                        </button>
+                    </a>
+                </div>
+                <div class="footer-section">
+                    <h3>Enlaces</h3>
+                    <ul>
+                        <li><a href="#">Inicio</a></li>
+                        <li><a href="/terminos-y-condiciones.html">Términos y Condiciones</a></li>
+                        <li><a href="/politica-de-privacidad.html">Política de Privacidad</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 Electro Sound Pack. Todos los derechos reservados.</p>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/ArConectadosWeb" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://www.tiktok.com/@arconectadosweb" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-tiktok"></i>
+                    </a>
+                    <a href="https://www.instagram.com/arconectadosweb" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://x.com/@ArConectadosWeb" target="_blank" rel="noopener noreferrer">
+                        <span style="font-family: sans-serif; font-size: 1.2em;">𝕏</span>
+                    </a>
+                    <a href="https://www.youtube.com/channel/YOUR_YOUTUBE_CHANNEL_ID" target="_blank" rel="noopener noreferrer"> <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div class="cart-icon" id="cart-icon">
+        <i class="fas fa-shopping-cart"></i>
+        <span class="cart-count">0</span>
+    </div>
+    <div class="modal" id="product-modal">
+        <div class="modal-content">
+            <span class="close-modal">×</span>
+            <div id="modal-body">
+              </div>
+        </div>
+    </div>
+    <div class="modal" id="cart-modal">
+        <div class="modal-content">
+            <span class="close-modal">×</span>
+            <div id="cart-items"></div>
+            <div class="cart-summary" style="margin-top: 1rem">
+                <p>Total: <span id="cart-total">$0.00</span></p>
+                <div style="display: flex; gap: 1mm; flex-wrap: wrap; margin-top: 1rem">
+                    <button class="btn" id="close-session-btn">
+                        <i class="fas fa-sign-out-alt"></i> Cerrar sesión y guardar
+                    </button>
+                    <button class="btn" id="whatsapp-purchase-btn" style="background-color: var(--whatsapp-color)">
+                        <i class="fab fa-whatsapp"></i> ¿Comprar todo por WhatsApp?
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="back-toast" class="back-toast hidden" role="status" aria-live="polite">
+      Presiona atrás nuevamente para salir
+    </div>
+
+    <script src="assets/js/ui.js" type="module"></script>
+    <script src="assets/js/login.js" type="module"></script>
+    <script src="assets/js/main.js" type="module"></script>
+</body>
+</html>
