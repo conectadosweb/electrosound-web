@@ -22,6 +22,7 @@ yarn-error.log*
 # === Archivos del sistema ===
 .DS_Store
 Thumbs.db
+package-lock.json
 
 # === Logs ===
 logs/
