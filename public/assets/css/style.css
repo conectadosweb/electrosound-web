@@ -65,16 +65,16 @@
 
 /* ===================== VARIABLES Y ESTILOS BASE ===================== */
 :root {
-    --primary-color: #7b4397; /* Un violeta más vibrante y moderno */
-    --secondary-color: #5c2b74; /* Un tono más oscuro del violeta principal */
-    --accent-color: #bb6cd1; /* Un violeta más claro y llamativo para acentos */
-    --slogan-color: #e2c0ed; /* Un violeta muy claro para textos sutiles */
-    --dark-color: #6a4f78; /* Un gris-púrpura para texto general oscuro */
+    --primary-color: #7F00FF; /* El nuevo violeta más a la moda */
+    --secondary-color: #5C00BC; /* Un tono más oscuro del violeta principal */
+    --accent-color: #9A33FF; /* Un violeta más claro y llamativo para acentos */
+    --slogan-color: #E6CCFF; /* Un violeta muy claro para textos sutiles */
+    --dark-color: #6A4F78; /* Un gris-púrpura para texto general oscuro */
     --light-color: #fcf8ff; /* Un color muy claro, casi blanco */
     --success-color: #a44a7f; /* Se mantiene para 'nuevo' o éxito */
     --warning-color: #ff5e79; /* Se mantiene el rosa vibrante para 'oferta' */
     --whatsapp-color: #25d366; /* Mantener WhatsApp su color original */
-    --footer-color: #2d1a3c; /* Un tono muy oscuro para el pie de página */
+    --footer-color: #1a0033; /* Un tono muy oscuro para el pie de página */
     --out-of-stock-color: #c54a4a; /* Un rojo oscuro para "sin stock" */
     --bg-color: #f7f2fb; /* Fondo general muy claro */
     --text-color: var(--dark-color);
@@ -357,7 +357,7 @@ body.dark #search-input::placeholder {
 
 #search-input:focus {
     border-color: var(--accent-color);
-    box-shadow: 0 0 0 3px rgba(123, 67, 151, 0.2); /* Usa el nuevo primary-color */
+    box-shadow: 0 0 0 3px rgba(127, 0, 255, 0.2); /* Usa el nuevo primary-color */
 }
 
 #search-btn {
@@ -592,8 +592,8 @@ body.dark .btn:hover {
     width: 100%;
     background: linear-gradient(
         1000deg,
-        rgba(123, 67, 151, 0.9), /* primary-color */
-        rgba(92, 43, 116, 0.9) /* secondary-color */
+        rgba(127, 0, 255, 0.8), /* primary-color adaptado */
+        rgba(92, 0, 188, 0.8) /* secondary-color adaptado */
     ),
     url("/data/web/conectados.webp") center center no-repeat;
     background-size: cover;
@@ -610,7 +610,7 @@ body.dark .btn:hover {
 body.dark .hero {
     background: linear-gradient(
         135deg,
-        rgba(45, 26, 60, 0.95), /* footer-color */
+        rgba(26, 0, 51, 0.95), /* footer-color adaptado */
         rgba(27, 38, 59, 0.95) /* dark-mode original blue (ajustar si necesario) */
     ),
     url("/data/web/conectados-dark.webp") center/cover no-repeat;
@@ -1289,7 +1289,7 @@ body.dark {
 .login-box input:focus {
     border-color: var(--primary-color);
     outline: none;
-    box-shadow: 0 0 0 3px rgba(123, 67, 151, 0.2); /* Usa el nuevo primary-color */
+    box-shadow: 0 0 0 3px rgba(127, 0, 255, 0.2); /* Usa el nuevo primary-color */
 }
 
 .register-text {
