@@ -592,8 +592,8 @@ body.dark .btn:hover {
     width: 100%;
     background: linear-gradient(
         1000deg,
-        rgba(127, 0, 255, 0.8), /* primary-color adaptado */
-        rgba(92, 0, 188, 0.8) /* secondary-color adaptado */
+        rgba(127, 0, 255, 0.85), /* primary-color adaptado */
+        rgba(92, 0, 188, 0.85) /* secondary-color adaptado */
     ),
     url("/data/web/conectados.webp") center center no-repeat;
     background-size: cover;
